@@ -1,20 +1,22 @@
-#include <Servo.h>
-#include <LiquidCrystal.h>
+// Code for ping pong robot in game room
+// To start machine:
+// Turn on power, tell machine to either be stationairy, or to use rotation plate (shown by light activating/turning off light).
+// Once the setting is chosen, machine will either go into standby or 
 
-LiquidCrystal lcd(7,8,9,10,11,12); // Initializing the LCD pins.
-Servo servo; // create servo object
+
+// Machine Functions
+// Reload balls -------------------------------------------------------- stepper motor
+// Control ball frequency ---------------------------------------------- relay/transistor as switch, blink light each time
+// Bluetooth control --------------------------------------------------- BT module
+// Signal lights(x4) ------------------------------------------------------- power supply ON/OFF, standby light, ready, active
+// Button Controls (x1) ----------------------------------------------------- Save location buttons
+
 
 //Constants
 const int FEED = 2;       // FEED pin
 const int RESET = 3;      // RESET pin
 const int LEDG =  4;      // green led pin
-const int LEDR = 5;       // red led pin
-const int POTPIN = 0;     // potentiometer input pin
-const int SERVOPIN = 6;   // servo output pin
-const int FEEDPOS = 0;
-const int STARTPOS = 180;
-unsigned long FEEDDELAY = 86400000L; // delay between feeding
-int count;
+
 
 
 // variables will change:
