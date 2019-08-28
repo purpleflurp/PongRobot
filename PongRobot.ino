@@ -26,6 +26,8 @@ const int enPin = 11;
 
 // variables will change:
 int step = 1;
+int SAVE;
+int ACTIVE;
 
 void setup() {
   // motor
@@ -33,6 +35,8 @@ void setup() {
   pinMode(dirPin,OUTPUT);
   pinMode(enPin,OUTPUT);
   digitalWrite(enPin,LOW);
+  
+  // need to add output for relay.
   
   // LEDs
   pinMode(LEDPOW,OUTPUT);
@@ -49,7 +53,8 @@ void setup() {
 
 void loop() {
   digitalWrite(LEDPOW, HIGH); // keep power light on
-  int SAVE = digitalRead(BUTTONSAVE);
+  SAVE = digitalRead(BUTTONSAVE);
+  ACTIVE = digitalRead(BUTTONACTIVE)
     if (SAVE == 1 && step == 1){
         int location1 = analogRead(POT);
       digitalWrite(LEDSTAND,HIGH);
@@ -58,23 +63,27 @@ void loop() {
       delay(20)
       step = 2;
     }
-    else {
-        step = 1;
-    }
     if(SAVE == 1 && step == 2){
         int location2 = analogRead(POT);
       digitalWrite(LEDSTAND,HIGH);
       delay(20);
       digitalWrite(LEDSTAND,HIGH);
       delay(150);
-      digitalWrite(LEDREADY,HIGH);
       step = 3;
     }
-    else {
-        step = 2;
+    if(step == 3){
+      digitalWrite(LEDREADY,HIGH);
+      digitalWrite(LEDSTAND,HIGH);
     }
+  if (ACTIVE == 1 && step == 3){
+    digitalWrite(LEDREADY,HIGH);
+    digitalWrite(LEDSTAND,HIGH);
+    delay(150)
+    step = 4
+    // output for shooter motor
+    
+  }
   
-
   
       // Create function thing to get the difference between the chosen location.  going to depend on number of steps, rotations in the device.  
       
