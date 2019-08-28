@@ -3,6 +3,7 @@
 // Turn on power, tell machine to either be stationairy, or to use rotation plate (shown by light activating/turning off light).
 // Once the setting is chosen, machine will either go into standby or 
 
+//    https://howtomechatronics.com/tutorials/arduino/rotary-encoder-works-use-arduino/
 
 // Machine Functions
 // Reload balls -------------------------------------------------------- stepper motor
@@ -51,10 +52,6 @@ void loop() {
   digitalWrite(LEDPOW, HIGH); // keep power light on
   SAVE = digitalRead(BUTTONSAVE);
   ACTIVE = digitalRead(BUTTONACTIVE)
-  //Create potentiometer control of the rotational plate
-      potVal = map(analogRead(A0),0,1024,0,500);
-      Pval = potVal;
-  
   // create different steps of startup
 }
     if (SAVE == 1 && step == 1){
@@ -91,25 +88,4 @@ void loop() {
   
       // Create function thing to get the difference between the chosen location.  going to depend on number of steps, rotations in the device.  
       
-  
-///// basic stepper motor program
-  digitalWrite(dirPin,HIGH); // Enables the motor to move in a particular direction
-  // Makes 200 pulses for making one full cycle rotation
-  for(int x = 0; x < 200; x++) {
-    digitalWrite(stepPin,HIGH); 
-    delayMicroseconds(500); 
-    digitalWrite(stepPin,LOW); 
-    delayMicroseconds(500); 
-  }
-  delay(1000); // One second delay
-  
-  digitalWrite(dirPin,LOW); //Changes the rotations direction
-  // Makes 400 pulses for making two full cycle rotation
-  for(int x = 0; x < 400; x++) {
-    digitalWrite(stepPin,HIGH);
-    delayMicroseconds(500);
-    digitalWrite(stepPin,LOW);
-    delayMicroseconds(500);
-  }
-  delay(1000);
   
