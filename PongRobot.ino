@@ -14,17 +14,18 @@
 
 //Constants
 const int LEDPOW = 2;                    // power LED
-const int LEDSTANDBY = 3;                // standby LED
+const int LEDSTAND = 3;                // standby LED
 const int LEDREADY =  4;                 // ready LED
 const int BUTTONSAVE = 5;                // button to save motor positions
 const int BUTTONACTIVE = 6;              // button to start machine, can replace with BT module eventually?
 const int SHOOT = 7;                     // motor relay/transistor switch
+const int POT = 0;
 const int stepPin = 9; 
 const int dirPin = 10; 
 const int enPin = 11;
 
 // variables will change:
-
+int step = 1;
 
 void setup() {
   // motor
@@ -35,7 +36,7 @@ void setup() {
   
   // LEDs
   pinMode(LEDPOW,OUTPUT);
-  pinMode(LEDSTANDY,OUTPUT);
+  pinMode(LEDSTAND,OUTPUT);
   pinMode(LEDREADY,OUTPUT);
   
   // Buttons
@@ -48,8 +49,33 @@ void setup() {
 
 void loop() {
   digitalWrite(LEDPOW, HIGH); // keep power light on
+  int SAVE = digitalRead(BUTTONSAVE);
+    if (SAVE == 1 && step == 1){
+        int location1 = analogRead(POT);
+      digitalWrite(LEDSTAND,HIGH);
+      delay(20)
+      digitalWrite(LEDSTAND,HIGH);
+      delay(20)
+      step = 2;
+    }
+    else {
+        step = 1;
+    }
+    if(SAVE == 1 && step == 2){
+        int location2 = analogRead(POT);
+      digitalWrite(LEDSTAND,HIGH);
+      delay(20);
+      digitalWrite(LEDSTAND,HIGH);
+      delay(150);
+      digitalWrite(LEDREADY,HIGH);
+      step = 3;
+    }
+    else {
+        step = 2;
+    }
   
+
   
+      // Create function thing to get the difference between the chosen location.  going to depend on number of steps, rotations in the device.  
+      
   
-  
-}
