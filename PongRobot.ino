@@ -10,7 +10,7 @@
 // Bluetooth control --------------------------------------------------- BT module
 // Signal lights(x3) ------------------------------------------------------- power supply ON/OFF, standby light, ready, active
 // Button Controls (x2) ----------------------------------------------------- Save location button, activation button
-
+// rotary encoder
 
 //Constants
 const int LEDPOW = 2;                    // power LED
@@ -19,7 +19,7 @@ const int LEDREADY =  4;                 // ready LED
 const int BUTTONSAVE = 5;                // button to save motor positions
 const int BUTTONACTIVE = 6;              // button to start machine, can replace with BT module eventually?
 const int SHOOT = 7;                     // motor relay/transistor switch
-const int POT = 0;
+const int ROT = 0;
 const int stepPin = 9; 
 const int dirPin = 10; 
 const int enPin = 11;
